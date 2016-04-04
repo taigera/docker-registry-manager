@@ -50,13 +50,13 @@ If you want to disable an existing account without deleting it, then you must ty
 If you want to enable an existing account, then you must type `docker_registry_manager accounts enable --username {USERNAME}`. Replace `{USERNAME}` with the username of the account that you want to enable.
 
 ### Manipulate images
-### List all images stored in the Taiger Docker Registry
+### List all images stored in the Docker Registry
 If you want to get all images stored in the server, then you must type `docker_registry_manager images list`.
-### List all tags stored in the Taiger Docker Registry
+### List all tags stored in the Docker Registry
 If you want to get all tags of an image, then you must type `docker_registry_manager images tags --remote-image {IMAGE TO CHECK}`. Replace `{IMAGE TO CHECK}` with the proper image name. For example, `docker_registry_tool tags --remote-image ubuntu`
-#### Search for an image stored in the Taiger Docker Registry
+#### Search for an image stored in the Docker Registry
 Issue the following command to search for an image: `docker_registry_manager images search --criteria {SEARCH CRITERIA}`. Replace `{SEARCH CRITERIA}` with the proper search criteria. The command will return a list with the names of the images that satisfy the search condition. For example, `docker_registry_manager images search --criteria ub` will retrieve all names that contains "ub".
-#### Deleting an image stored with the  Taiger Docker Registry Tool
+#### Deleting an image stored with the Docker Registry Tool
 Issue the following command to delete an image: `docker_registry_manager images delete --remote-image {IMAGE NAME} --tag {TAG}`. Replace `{IMAGE TO CHECK}` and `{TAG}` with the proper image name and tag. For example, `docker_registry_manager images delete --remote-image ubuntu --tag old`
 
 ## Users
