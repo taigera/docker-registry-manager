@@ -312,10 +312,11 @@ class DockerRegistryManagerOperations(object):
         ssh_port = parser.get('docker_registry_manager', 'SSHPort')
         ssh_username = parser.get('docker_registry_manager', 'SSHUsername')
         ssh_password = parser.get('docker_registry_manager', 'SSHPassword')
+        registry_users_file = parser.get('docker_registry_manager', 'RegistryUsersFile')
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(ssh_address, port=int(ssh_port), username=ssh_username, password=ssh_password)
-        stdin, stdout, stderr = ssh.exec_command("cat /docker-registry/nginx/registry.password")
+        stdin, stdout, stderr = ssh.exec_command("cat " + registry_users_file)
         for line in stdout.read().splitlines():
             print line
         ssh.close()
@@ -340,12 +341,13 @@ class DockerRegistryManagerOperations(object):
         ssh_port = parser.get('docker_registry_manager', 'SSHPort')
         ssh_username = parser.get('docker_registry_manager', 'SSHUsername')
         ssh_password = parser.get('docker_registry_manager', 'SSHPassword')
+        registry_users_file = parser.get('docker_registry_manager', 'RegistryUsersFile')
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(ssh_address, port=int(ssh_port), username=ssh_username, password=ssh_password)
         ssh.exec_command("htpasswd -b /docker-registry/nginx/registry.password " + args.username + " " + args.password)
-        stdin, stdout, stderr = ssh.exec_command("sed -i '/^" + args.username + ":/ s/$/ #'" + args.description + "'/' "
-                                                                                                                  "/docker-registry/nginx/registry.password")
+        stdin, stdout, stderr = ssh.exec_command("sed -i '/^" + args.username + ":/ s/$/ #'" + args.description + "'/' " +
+                                                                                                                registry_users_file)
 
         for line in stdout.read().splitlines():
             print line
@@ -371,10 +373,11 @@ class DockerRegistryManagerOperations(object):
         ssh_port = parser.get('docker_registry_manager', 'SSHPort')
         ssh_username = parser.get('docker_registry_manager', 'SSHUsername')
         ssh_password = parser.get('docker_registry_manager', 'SSHPassword')
+        registry_users_file = parser.get('docker_registry_manager', 'RegistryUsersFile')
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(ssh_address, port=int(ssh_port), username=ssh_username, password=ssh_password)
-        stdin, stdout, stderr = ssh.exec_command("htpasswd -b /docker-registry/nginx/registry.password " +
+        stdin, stdout, stderr = ssh.exec_command("htpasswd -b  " + registry_users_file + " " +
                                                  args.username + " " + args.new_password)
         for line in stdout.read().splitlines():
             print line
@@ -400,11 +403,12 @@ class DockerRegistryManagerOperations(object):
         ssh_port = parser.get('docker_registry_manager', 'SSHPort')
         ssh_username = parser.get('docker_registry_manager', 'SSHUsername')
         ssh_password = parser.get('docker_registry_manager', 'SSHPassword')
+        registry_users_file = parser.get('docker_registry_manager', 'RegistryUsersFile')
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(ssh_address, port=int(ssh_port), username=ssh_username, password=ssh_password)
         stdin, stdout, stderr = ssh.exec_command("sed -i '/" + args.username +
-                                                 "/s/^#//g' /docker-registry/nginx/registry.password")
+                                                 "/s/^#//g' " + registry_users_file)
         for line in stdout.read().splitlines():
             print line
         ssh.close()
@@ -429,11 +433,12 @@ class DockerRegistryManagerOperations(object):
         ssh_port = parser.get('docker_registry_manager', 'SSHPort')
         ssh_username = parser.get('docker_registry_manager', 'SSHUsername')
         ssh_password = parser.get('docker_registry_manager', 'SSHPassword')
+        registry_users_file = parser.get('docker_registry_manager', 'RegistryUsersFile')
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(ssh_address, port=int(ssh_port), username=ssh_username, password=ssh_password)
         stdin, stdout, stderr = ssh.exec_command("sed -i '/" + args.username +
-                                                 "/s/^/#/g' /docker-registry/nginx/registry.password")
+                                                 "/s/^/#/g' " + registry_users_file)
         for line in stdout.read().splitlines():
             print line
         ssh.close()
@@ -458,10 +463,11 @@ class DockerRegistryManagerOperations(object):
         ssh_port = parser.get('docker_registry_manager', 'SSHPort')
         ssh_username = parser.get('docker_registry_manager', 'SSHUsername')
         ssh_password = parser.get('docker_registry_manager', 'SSHPassword')
+        registry_users_file = parser.get('docker_registry_manager', 'RegistryUsersFile')
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(ssh_address, port=int(ssh_port), username=ssh_username, password=ssh_password)
-        stdin, stdout, stderr = ssh.exec_command("htpasswd -D /docker-registry/nginx/registry.password " +
+        stdin, stdout, stderr = ssh.exec_command("htpasswd -D " + registry_users_file + " " +
                                                  args.username)
         for line in stdout.read().splitlines():
             print line
