@@ -3,6 +3,10 @@ from ConfigParser import SafeConfigParser
 
 import paramiko
 import requests
+
+import os
+import sys
+
 from requests.auth import HTTPBasicAuth
 
 
@@ -13,7 +17,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_manager', 'RegistryProtocol') + parser.get(
             'docker_registry_manager',
             'RegistryAddress') + ':' + parser.get(
@@ -30,7 +41,14 @@ class DockerRegistryManagerOperations(object):
     def list_images(self):
         """Lists all images stored in the Docker Registry. """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_manager', 'RegistryProtocol') + parser.get(
             'docker_registry_manager',
             'RegistryAddress') + ':' + parser.get(
@@ -49,7 +67,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_manager', 'RegistryProtocol') + parser.get(
             'docker_registry_manager',
             'RegistryAddress') + ':' + parser.get(
@@ -69,7 +94,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_manager', 'RegistryProtocol') + parser.get(
             'docker_registry_manager',
             'RegistryAddress') + ':' + parser.get(
@@ -92,7 +124,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_manager', 'RegistryProtocol') + parser.get(
             'docker_registry_manager',
             'RegistryAddress') + ':' + parser.get(
@@ -112,7 +151,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_manager', 'RegistryProtocol') + parser.get(
             'docker_registry_manager',
             'RegistryAddress') + ':' + parser.get(
@@ -140,7 +186,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         ssh_address = parser.get(
             'docker_registry_manager',
             'SSHAddress')
@@ -161,7 +214,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         ssh_address = parser.get(
             'docker_registry_manager',
             'SSHAddress')
@@ -182,7 +242,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         ssh_address = parser.get(
             'docker_registry_manager',
             'SSHAddress')
@@ -203,7 +270,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         ssh_address = parser.get(
             'docker_registry_manager',
             'SSHAddress')
@@ -224,7 +298,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         ssh_address = parser.get(
             'docker_registry_manager',
             'SSHAddress')
@@ -245,7 +326,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         ssh_address = parser.get(
             'docker_registry_manager',
             'SSHAddress')
@@ -269,7 +357,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         ssh_address = parser.get(
             'docker_registry_manager',
             'SSHAddress')
@@ -291,7 +386,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         ssh_address = parser.get(
             'docker_registry_manager',
             'SSHAddress')
@@ -313,7 +415,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         ssh_address = parser.get(
             'docker_registry_manager',
             'SSHAddress')
@@ -335,7 +444,14 @@ class DockerRegistryManagerOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         ssh_address = parser.get(
             'docker_registry_manager',
             'SSHAddress')

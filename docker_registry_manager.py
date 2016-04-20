@@ -4,12 +4,14 @@ import argparse
 from ConfigParser import SafeConfigParser
 
 import requests
+import os
+import sys
 
 from docker_registry_manager_operations import DockerRegistryManagerOperations
 
 
 class DockerRegistryManager(object):
-    CONST_SCRIPT_VERSION = '1.0.0'
+    CONST_SCRIPT_VERSION = '1.0.1'
 
     @staticmethod
     def main():
@@ -131,7 +133,14 @@ class DockerRegistryManager(object):
         :return: true if the settings are OK, otherwise returns false.
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_manager.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_manager.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_manager', 'RegistryAddress')
         registry_protocol = parser.get('docker_registry_manager', 'RegistryProtocol')
         registry_port = parser.get('docker_registry_manager', 'RegistryPort')
