@@ -24,6 +24,13 @@ Follow these instructions to compile and install docker-registry-tool.
 ## Configuration
 The script configuration is made in the `docker_registry_manager.conf` file. You can open and modify it with a plain text editor. This file must be in the same path where the Docker Registry Manager is stored. 
 
+## Requisites
+Before running the tool, ensure you satisfy the following requisites.
+* A Docker Registry valid user account and certificate.
+* SSH access to the machine where the Docker Registry is stored.
+* A working Internet connection.
+* In Windows, you will need to have installed the [Microsoft Visual C++ 2010 Redistributable Package](https://www.microsoft.com/en-us/download/details.aspx?id=5555).
+
 ## Run
 ### Manipulate the Docker Registry itself
 #### Print the Docker Registry status
